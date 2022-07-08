@@ -1,3 +1,23 @@
+local function OnPlayerConnecting(playerName, setKickReason, deferrals)
+    local src = source
+    local identifiers = GetPlayerIdentifiers(src)
+    print('[nh-base] Player Connecting' .. playerName .. GetPlayerIdentifiers(src)[1])
+    deferrals.defer()
+    Wait(0)
+    deferrals.update(string.format("Hello %s. Your Steam ID is being checked.", playerName))
+    for _, v in pairs(identifiers) do
+        if string.find(v, "steam") then
+            steamIdentifier = v
+            break
+        end
+    end
+    Wait(0)
+    if not steamIdentifier then
+        deferrals.done('You Should open steam to connect to the server')
+    end
+end
+AddEventHandler("playerConnecting", OnPlayerConnecting)
+
 RegisterServerEvent('nh-base:server:Start')
 AddEventHandler('nh-base:server:Start', function()
     print('[nh-base] Server Start')
