@@ -14,6 +14,8 @@ local function OnPlayerConnecting(playerName, setKickReason, deferrals)
     Wait(0)
     if not steamIdentifier then
         deferrals.done('You Should open steam to connect to the server')
+    else
+        deferrals.done()
     end
 end
 AddEventHandler("playerConnecting", OnPlayerConnecting)
