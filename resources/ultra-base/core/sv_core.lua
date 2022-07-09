@@ -47,3 +47,17 @@ RegisterNetEvent('ultra-base:server:getObject')
 AddEventHandler('ultra-base:server:getObject', function(callback)
     callback(Ultra)
 end)
+
+-- Comamnds
+AddEventHandler('ultra-base:addCommand', function(command,callback,suggestion, args)
+    Ultra.Functions.AddCommands(command, callback, suggestion, args)
+end)
+
+-- Callback
+RegisterServerEvent('ultra-base:server:triggerServerCallback')
+AddEventHandler('ultra-base:server:triggerServerCallback', function(name, requestId, ...)
+    local src = source
+    Ultra.Functions.TriggerServerCallback(name, requestId, src, function(...)
+        TriggerClientEvent('ultra-base:client:serverCallback', src, requestId, ...)
+    end, ...)
+end)
