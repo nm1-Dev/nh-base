@@ -52,7 +52,7 @@ Ultra.Functions.LoadPlayer = (function(source, pData, cinfo)
     local src = source
     local identifier = pData.identifier
     Citizen.Wait(100)
-    MySQL.Async.fetchAll('SELECT * FROM players WHERE license = @license AND cinfo = @cinfo' {
+    MySQL.Async.fetchAll('SELECT * FROM players WHERE license = @license AND cinfo = @cinfo', {
         ['license'] = identifier,
         ['cinfo'] = cinfo
     }, function(result)

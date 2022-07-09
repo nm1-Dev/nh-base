@@ -1,6 +1,3 @@
-Ultra = {}
-Ultra.Base = {}
-
 function Ultra.Base.Start(self)
     Citizen.CreateThread(function()
         while true do
