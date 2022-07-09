@@ -38,4 +38,5 @@ end
 
 AddEventHandler('ultra-base:Start', function()
     StartingRP()
+    print('[ultra-base] RP Started')
 end)
